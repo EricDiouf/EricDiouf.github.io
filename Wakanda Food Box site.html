@@ -1,0 +1,57 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Subbly Accounts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link href="https://static.subbly.me/fs/subbly/images/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://accounts.subbly.me/assets/fonts/icomoon.css">
+                                                        <link rel="stylesheet" href="https://accounts.subbly.me/frontend/assets/ember-accounts-fa0cf4e261056d8ed0af25680fa17417.css">
+                        </head>
+    <body>
+        <div class="uc-preloader active">
+            <div class="content">
+                <div class="loader">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot3"></div>
+                    <div class="dot dot4"></div>
+                </div>
+                <div class="text">
+                    <div class="scroll-text">
+                        <p style="padding-left:0 !important">
+                            Preparing Website
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="application/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    method: 'POST',
+                    url: 'https://accounts.subbly.me/edit-site/website/611/wakanda-food-box-64932fe2d0139',
+                    data: {
+                        _token: 'jEIWgv7pVx9qeMJUPdEKMPdfVCayPyESsOnjGnPw'
+                    },
+                    success: function (response) {
+                        window.location = response;
+                    },
+                    error: function (response) {
+                        var responseData = JSON.parse(response.responseText);
+                        var errorMessage = '';
+                        $.each(responseData.errors, function (index, error) {
+                            Object.values(error).forEach(function (value) {
+                                errorMessage += '<p>' + value + '</p>';
+                            });
+                        });
+                        $('.uc-preloader .content').html(errorMessage);
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
